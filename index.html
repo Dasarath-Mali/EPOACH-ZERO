@@ -90,7 +90,7 @@
         .btn-parent  { background: linear-gradient(90deg, #10b981 0%, #059669 100%); }
         .role-btn i { margin-right: 15px; font-size: 1.4rem; }
 
-        /* --- 5. LOGIN SCREEN (Sketch Style) --- */
+        /* --- 5. LOGIN SCREEN --- */
         #login-screen {
             flex-direction: column;
             align-items: center;
@@ -129,11 +129,7 @@
             justify-content: center;
         }
 
-        .image-oval-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .image-oval-container img { width: 100%; height: 100%; object-fit: cover; }
 
         .input-group { margin-bottom: 25px; text-align: left; }
         
@@ -207,13 +203,13 @@
         <div class="right-col">
             <h2 class="select-heading">Select Your Position</h2>
             <div class="buttons-container">
-                <button class="role-btn btn-teacher" onclick="openLogin('teacher')">
+                <button class="role-btn btn-teacher" onclick="openLogin('teachers')">
                     <i class="fas fa-chalkboard-user"></i> Teacher
                 </button>
-                <button class="role-btn btn-student" onclick="openLogin('student')">
+                <button class="role-btn btn-student" onclick="openLogin('students')">
                     <i class="fas fa-graduation-cap"></i> Student
                 </button>
-                <button class="role-btn btn-parent" onclick="openLogin('parent')">
+                <button class="role-btn btn-parent" onclick="openLogin('parents')">
                     <i class="fas fa-users"></i> Parent
                 </button>
             </div>
@@ -247,16 +243,16 @@
     </div>
 
     <script>
-        // Configuration for UI updates
+        // --- 1. CONFIGURATION ---
         const roleData = {
-            teacher: { title: "TEACHER LOGIN", img: "teacher.jpeg" },
-            student: { title: "STUDENT LOGIN", img: "student.jpeg" },
-            parent: { title: "PARENT LOGIN", img: "parent.jpeg" }
+            teachers: { title: "TEACHER LOGIN", img: "teacher.jpeg" },
+            students: { title: "STUDENT LOGIN", img: "student.jpeg" },
+            parents: { title: "PARENT LOGIN", img: "parent.jpeg" }
         };
 
         let activeRole = "";
 
-        // UI Function: Switch to login screen
+        // --- 2. SWITCH TO LOGIN SCREEN ---
         function openLogin(role) {
             activeRole = role; 
             const data = roleData[role];
@@ -267,27 +263,32 @@
             document.getElementById('selection-screen').classList.add('hidden');
             document.getElementById('login-screen').classList.remove('hidden');
 
-            // Attach the submit function to the button
             document.getElementById('login-trigger').onclick = function() {
                 submitLogin(activeRole);
             };
         }
 
-        // UI Function: Return to selection screen
+        // --- 3. GO BACK FUNCTION ---
         function goBack() {
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('selection-screen').classList.remove('hidden');
-            // Clear inputs for security
             document.getElementById('user').value = "";
             document.getElementById('pass').value = "";
         }
 
-        // BACKEND INTEGRATION: Submit to Node.js server
+        // --- 4. REDIRECT FUNCTION ---
+        function performRedirect(role) {
+            if (role === "students") window.location.href = "student.html";
+            else if (role === "teachers") window.location.href = "teacher.html";
+            else if (role === "parents") window.location.href = "parent.html";
+        }
+
+        // --- 5. MAIN SUBMIT FUNCTION ---
         async function submitLogin(role) {
-            const id = document.querySelector("#user").value;
+            const username = document.querySelector("#user").value;
             const password = document.querySelector("#pass").value;
 
-            if (!id || !password) {
+            if (!username || !password) {
                 alert("Please enter both username and password.");
                 return;
             }
@@ -296,33 +297,23 @@
                 const res = await fetch("http://localhost:3000/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ role, id, password })
+                    // FIX: Changed 'username' to 'id' to match server.js req.body
+                    body: JSON.stringify({ role, id: username, password })
                 });
 
                 const data = await res.json();
 
-                if (!data.success) {
-                    alert(data.message || "Invalid credentials. Please try again.");
-                    return;
+                if (data.success) {
+                    performRedirect(role);
+                } else {
+                    alert("Invalid Credentials. Please try again.");
                 }
 
-                // Successful login: Store ID and redirect
-                if (role === "student") {
-                    localStorage.setItem("student_id", id);
-                    window.location.href = "student.html";
-                } else if (role === "teacher") {
-                    localStorage.setItem("teacher_id", id);
-                    window.location.href = "teacher.html";
-                } else if (role === "parent") {
-                    localStorage.setItem("parent_id", id);
-                    window.location.href = "parent.html";
-                }
             } catch (error) {
-                console.error("Connection Error:", error);
-                alert("Cannot connect to the server. Please ensure your backend is running on port 3000.");
+                console.warn("Backend error:", error);
+                alert("Cannot connect to server. Ensure 'node server.js' is running.");
             }
         }
     </script>
-
 </body>
 </html>

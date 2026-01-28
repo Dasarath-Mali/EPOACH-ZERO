@@ -59,6 +59,7 @@
             border-radius: 50%;
             background-color: #fff;
             margin-bottom: 15px;
+            /* Ensure teacher.jpeg is in the folder */
             background-image: url('teacher.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -97,7 +98,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            position: relative; /* Needed for dropdown positioning */
+            position: relative; 
         }
 
         .sidebar-btn:hover {
@@ -105,7 +106,7 @@
             background-color: #f7fafc;
         }
 
-        /* --- DROPDOWN STYLING (NEW) --- */
+        /* --- DROPDOWN STYLING --- */
         .dropdown-wrapper {
             width: 100%;
             margin-bottom: 25px;
@@ -113,9 +114,9 @@
         }
 
         .dropdown-content {
-            display: none; /* Hidden by default */
+            display: none; 
             position: absolute;
-            top: 100%; /* Shows right below the button */
+            top: 100%; 
             left: 0;
             width: 100%;
             background-color: white;
@@ -127,7 +128,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Shows the dropdown when JS adds this class */
         .show {
             display: block;
         }
@@ -229,7 +229,6 @@
         .bg-lessons { background-image: url('https://img.freepik.com/free-vector/hand-drawn-colorful-science-education-wallpaper_23-2148489183.jpg?w=360'); }
         .bg-exam { background-image: url('https://img.freepik.com/free-vector/flat-background-world-teacher-s-day-celebration_23-2150722546.jpg?semt=ais_hybrid&w=740&q=80'); }
 
-        /* Responsive */
         @media (max-width: 900px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 3px solid #2d3748; padding: 20px; }
@@ -276,22 +275,23 @@
 
     <main class="main-content">
         <div class="dashboard-grid">
-            <div class="card" onclick="alert('Opening Attendance...')">
+            
+            <div class="card" onclick="window.location.href='teacher_attendance.html'">
                 <div class="card-bg bg-attendance"></div>
                 <div class="card-text">STUDENT<br>ATTENDANCE</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Progress...')">
+            <div class="card" onclick="window.location.href='teacher_progress.html'">
                 <div class="card-bg bg-progress"></div>
                 <div class="card-text">STUDENT<br>PROGRESS</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Lessons...')">
+            <div class="card" onclick="window.location.href='classwise.jpeg'">
                 <div class="card-bg bg-lessons"></div>
                 <div class="card-text">CLASS WISE<br>LESSONS</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Exams...')">
+            <div class="card" onclick="window.location.href='test_exam.html'">
                 <div class="card-bg bg-exam"></div>
                 <div class="card-text">TEST / EXAM</div>
             </div>
@@ -308,8 +308,6 @@
         function selectGrade(gradeName) {
             document.getElementById("current-grade").innerText = gradeName;
             document.getElementById("gradeDropdown").classList.remove("show");
-            // You can add logic here to load specific data for that grade if needed
-            console.log("Switched to " + gradeName);
         }
 
         // Close the dropdown if the user clicks outside of it

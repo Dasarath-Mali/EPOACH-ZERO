@@ -59,7 +59,7 @@
             border-radius: 50%;
             background-color: #fff;
             margin-bottom: 15px;
-            /* ensure parent.jpeg exists in your folder */
+            /* Ensure parent.jpeg exists in your folder */
             background-image: url('parent.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -82,7 +82,6 @@
         }
 
         /* Sidebar Buttons */
-        /* The parent sketch was simpler, mostly just logout at the bottom */
         .sidebar-btn {
             width: 100%;
             padding: 15px;
@@ -179,33 +178,12 @@
             pointer-events: none;
         }
 
-        /* --- SPECIFIC IMAGES FOR PARENT DASHBOARD --- */
-        
-        /* 1. Student Attendance (Top Left - Chalkboard) */
-        .bg-attendance { 
-            background-image: url('https://img.freepik.com/free-photo/top-view-education-day-elements-with-copy-space_23-2148721223.jpg'); 
-        }
-        
-        /* 2. Timetable (Top Right - Blackboard Art) */
-        .bg-timetable { 
-            background-image: url('https://wallpapers.com/images/hd/chalkboard-school-art-7vfpwey4ejx3o9uz.jpg'); 
-        }
-        
-        /* 3. Student Marks (Bottom Left - Yellow Supplies) */
-        .bg-marks { 
-            background-image: url('https://img.freepik.com/premium-vector/set-education-bg-05-edit_77417-11192.jpg?semt=ais_hybrid&w=740&q=80'); 
-        }
-        
-        /* 4. Student Fees (Bottom Right - Money/Fees) */
-        .bg-fees { 
-            background-image: url('https://static.vecteezy.com/system/resources/previews/057/519/746/non_2x/tuition-fees-in-fixed-form-education-fund-for-college-savings-for-school-or-university-fees-professional-qualification-fees-study-or-training-fees-flat-cartoon-design-illustration-background-vector.jpg'); 
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-color: #f0f8ff;
-        }
+        /* --- CARD BACKGROUND IMAGES (Parent Theme) --- */
+        .bg-attendance { background-image: url('https://img.freepik.com/free-photo/top-view-education-day-elements-with-copy-space_23-2148721223.jpg'); }
+        .bg-timetable { background-image: url('https://wallpapers.com/images/hd/chalkboard-school-art-7vfpwey4ejx3o9uz.jpg'); }
+        .bg-marks { background-image: url('https://img.freepik.com/premium-vector/set-education-bg-05-edit_77417-11192.jpg?semt=ais_hybrid&w=740&q=80'); }
+        .bg-fees { background-image: url('https://static.vecteezy.com/system/resources/previews/057/519/746/non_2x/tuition-fees-in-fixed-form-education-fund-for-college-savings-for-school-or-university-fees-professional-qualification-fees-study-or-training-fees-flat-cartoon-design-illustration-background-vector.jpg'); background-size: contain; background-repeat: no-repeat; background-color: #f0f8ff; }
 
-
-        /* Responsive */
         @media (max-width: 900px) {
             body { flex-direction: column; overflow: auto; }
             .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 3px solid #2d3748; padding: 20px; }
@@ -221,13 +199,12 @@
         <div class="menu-icon"><i class="fas fa-bars"></i></div>
 
         <div class="profile-section">
-            <div class="profile-pic">
-                </div>
+            <div class="profile-pic"></div>
             <div class="parent-name">[NAME]</div>
         </div>
 
         <div class="divider"></div>
-
+        
         <button class="sidebar-btn logout" onclick="logout()">
             LOG OUT
         </button>
@@ -236,22 +213,22 @@
     <main class="main-content">
         <div class="dashboard-grid">
             
-            <div class="card" onclick="alert('Opening Attendance...')">
+            <div class="card" onclick="window.location.href='attendance.jpeg'">
                 <div class="card-bg bg-attendance"></div>
                 <div class="card-text">STUDENT<br>ATTENDANCE</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Timetable...')">
+            <div class="card" onclick="window.location.href='timetable.jpeg'">
                 <div class="card-bg bg-timetable"></div>
                 <div class="card-text">TIMETABLE</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Marks...')">
+            <div class="card" onclick="window.location.href='parmarks.html'">
                 <div class="card-bg bg-marks"></div>
                 <div class="card-text">STUDENT<br>MARKS</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Fees...')">
+            <div class="card" onclick="window.location.href='parfees.html'">
                 <div class="card-bg bg-fees"></div>
                 <div class="card-text">STUDENT<br>FEES</div>
             </div>

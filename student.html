@@ -13,7 +13,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fff3e0; /* Slightly warmer background for students */
+            background-color: #fff3e0; /* Warm background for students */
             height: 100vh;
             overflow: hidden; 
             display: flex;
@@ -59,7 +59,7 @@
             border-radius: 50%;
             background-color: #fff;
             margin-bottom: 15px;
-            /* ensure student.jpeg exists in your folder */
+            /* Ensure student.jpeg is in your folder */
             background-image: url('student.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -98,7 +98,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none; /* In case we use <a> tags */
+            text-decoration: none; 
         }
 
         .sidebar-btn:hover {
@@ -179,28 +179,27 @@
             pointer-events: none;
         }
 
-        /* --- SPECIFIC IMAGES FOR STUDENT DASHBOARD --- */
+        /* --- CARD IMAGES --- */
         
-        /* 1. Timetable (Top Left) */
+        /* 1. Timetable */
         .bg-timetable { 
             background-image: url('https://c1.wallpaperflare.com/preview/327/433/285/timetable-paper-drawing-pad-colored-pencils.jpg'); 
         }
         
-        /* 2. Attendance (Top Right - Alarm Clock) */
+        /* 2. Attendance */
         .bg-attendance { 
             background-image: url('https://img.freepik.com/free-photo/alarm-clock-folder-thinking-messy-school_1134-1357.jpg?semt=ais_user_personalization&w=740&q=80'); 
         }
         
-        /* 3. Lessons (Bottom Left - Science/Space) */
+        /* 3. Lessons */
         .bg-lessons { 
             background-image: url('https://img.freepik.com/free-vector/flat-national-science-day-background_23-2149283132.jpg?semt=ais_user_personalization&w=740&q=80'); 
         }
         
-        /* 4. Quiz/Games (Bottom Right - Education Icons) */
+        /* 4. Quiz/Games */
         .bg-quiz { 
             background-image: url('https://img.freepik.com/free-vector/flat-international-day-education-background_23-2151081135.jpg'); 
         }
-
 
         /* Responsive */
         @media (max-width: 900px) {
@@ -218,8 +217,7 @@
         <div class="menu-icon"><i class="fas fa-bars"></i></div>
 
         <div class="profile-section">
-            <div class="profile-pic">
-                </div>
+            <div class="profile-pic"></div>
             <div class="student-name">[NAME]</div>
         </div>
 
@@ -245,22 +243,22 @@
     <main class="main-content">
         <div class="dashboard-grid">
             
-            <div class="card" onclick="alert('Opening Timetable...')">
+            <div class="card" onclick="window.location.href='timetable.jpeg'">
                 <div class="card-bg bg-timetable"></div>
                 <div class="card-text">TIMETABLE</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Attendance...')">
+            <div class="card" onclick="window.location.href='attendance.jpeg'">
                 <div class="card-bg bg-attendance"></div>
                 <div class="card-text">ATTENDANCE</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Lessons...')">
+            <div class="card" onclick="window.location.href='student_lessons.html'">
                 <div class="card-bg bg-lessons"></div>
                 <div class="card-text">LESSONS</div>
             </div>
 
-            <div class="card" onclick="alert('Opening Games...')">
+            <div class="card" onclick="window.location.href='student_quizzes.html'">
                 <div class="card-bg bg-quiz"></div>
                 <div class="card-text">QUIZ / GAMES</div>
             </div>
