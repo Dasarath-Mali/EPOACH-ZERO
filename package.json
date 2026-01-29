@@ -1,19 +1,29 @@
 {
-  "name": "html",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "mysql2": "^3.16.2"
-  }
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.6.0",
+    "node-fetch": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dasarath-Mali/EPOACH-ZERO.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dasarath-Mali/EPOACH-ZERO/issues"
+  },
+  "homepage": "https://github.com/Dasarath-Mali/EPOACH-ZERO#readme"
 }
